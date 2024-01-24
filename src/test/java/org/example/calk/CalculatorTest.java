@@ -56,29 +56,35 @@ public class CalculatorTest {
         assertEquals(95, result); // Проверка деления
     }
     @Test
-    void testPositive() {
+    void testPositiveSumCart() {
         assertThrows(IllegalStateException.class, () -> {
-            int result = calculator.calculateDiscount(-100, operand); // Попытка отрицательных значений
+            int result = calculator.calculateDiscount(-100, operand); // Попытка отрицательных покупок
         });
     }
 
     @Test
     void testPositiveDiscount() {
         assertThrows(IllegalStateException.class, () -> {
-            int result = calculator.calculateDiscount(100, -operand); // Попытка отрицательных значений
+            int result = calculator.calculateDiscount(100, -operand); // Попытка отрицательной скидки
         });
     }
     @Test
     void testNotZeroSumCart() {
         assertThrows(IllegalStateException.class, () -> {
-            int result = calculator.calculateDiscount(0, -operand); // Попытка отрицательных значений
+            int result = calculator.calculateDiscount(0, -operand); // Попытка нулевой покупки
         });
     }
 
     @Test
     void testNotZeroDiscount() {
         assertThrows(IllegalStateException.class, () -> {
-            int result = calculator.calculateDiscount(100, 0); // Попытка отрицательных значений
+            int result = calculator.calculateDiscount(100, 0); // Попытка нулевой скидки
+        });
+    }
+    @Test
+    void testTwoOperandPositive() {
+        assertThrows(IllegalStateException.class, () -> {
+            int result = calculator.calculateDiscount(-100, - operand); // Попытка отрицательных значений
         });
     }
 }
